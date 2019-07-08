@@ -24,7 +24,8 @@ const router = new VueRouter({
     name: 'equip',
     path: '/equip',
     component: equip
-  },{path:'/',redirect:'/hero'}]
+  },{path:'/',redirect:'/hero'}],
+  linkExactActiveClass:'active'
 })
 new Vue({
   render: h => h(App),
