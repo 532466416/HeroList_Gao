@@ -6,22 +6,31 @@ Vue.use(VueRouter)
 import hero from './views/hero/hero.vue'
 import weapon from './views/weapon/weapon.vue'
 import equip from './views/equip/equip.vue'
+import additem from './views/hero/additem.vue'
 
 const router = new VueRouter({
-    routes: [{
-      name: 'hero',
-      path: '/hero',
-      component: hero
-    },{
-      name: 'weapon',
-      path: '/weapon',
-      component: weapon
-    },{
-      name: 'equip',
-      path: '/equip',
-      component: equip
-    },{path:'/',redirect:'/hero'}],
-    linkExactActiveClass:'active'
-  })
+  routes: [{
+    name: 'hero',
+    path: '/hero',
+    component: hero
+  }, {
+    name: 'weapon',
+    path: '/weapon',
+    component: weapon
+  }, {
+    name: 'equip',
+    path: '/equip',
+    component: equip
+  },{
+    name:'additem',
+    path:'/hero/additem',
+    component:additem
+  },
+   {
+    path: '/',
+    redirect: '/hero'
+  }],
+  linkExactActiveClass: 'active'
+})
 
-  export default router
+export default router
