@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import axios from "axios";
-// 为什么不能把它放在router.js或者main.js
+// import axios from "axios";
+// 为什么不能把它放在router.js或者main.js,其他组件也就能用了，而是每个组件都需要引入一遍
 
 export default {
   data() {
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     getData() {
-      axios.get("http://localhost:3000/users").then(respons => {
+      this.axios.get("").then(respons => {
         const { status, data } = respons;
         if (status == 200) {
           this.list = data;
@@ -57,12 +57,14 @@ export default {
         alert('服务器异常');
         console.log(err)
       })
+console.log(this)
+
     },
     delData(id){
       if(!confirm('Sure to delete?')){
         return false
       }
-      axios.delete(`http://localhost:3000/users/${id}`).then(response=>{
+      this.axios.delete(`/${id}`).then(response=>{
         if(response.status == 200){
           this.getData();
         }else{

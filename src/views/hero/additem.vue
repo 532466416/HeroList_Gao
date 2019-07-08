@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
     data(){
@@ -37,7 +37,7 @@ export default {
     },
   methods: {
     addHero() {
-        axios.post('http://localhost:3000/users',this.formData).then(respons=>{
+        this.axios.post('',this.formData).then(respons=>{
             if(respons.status == 201){
                 this.$router.push('/hero')
             }

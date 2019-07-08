@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+
 export default {
     props:['id'],
     data(){
@@ -37,7 +38,7 @@ export default {
     },
     methods: {
         editGet(){
-            axios.get(`http://localhost:3000/users/${this.id}`).then(response=>{
+            this.axios.get(`/${this.id}`).then(response=>{
                 const {status,data} = response;
                 if(status == 200){
                     this.formData.name = data.name;
@@ -46,7 +47,7 @@ export default {
             })
         },
         editSend(){
-            axios.put(`http://localhost:3000/users/${this.id}`,this.formData).then(response=>{
+            this.axios.put(`/${this.id}`,this.formData).then(response=>{
                 if(response.status == 200){
                     this.$router.push({name:'hero'})
                 }
