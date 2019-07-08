@@ -13,14 +13,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item,index) in list" :key="index">
-            <td>{{item.id}}</td>
+          <tr v-for="(item,index) in list" :key="item.id">
+            <td>{{index + 1}}</td>
             <td>{{item.name}}</td>
             <td>{{item.gender}}</td>
             <td>
-              <a href="edit.html">edit</a>
+              <a href="edit.html">编辑</a>
               &nbsp;&nbsp;
-              <a href="javascript:window.confirm('Are you sure?')">delete</a>
+              <a href="javascript:" @click="delData(item.id)">删除</a>
             </td>
           </tr>
         </tbody>
@@ -53,6 +53,21 @@ export default {
         }
       }).catch(err=>{
         alert('服务器异常');
+        console.log(err)
+      })
+    },
+    delData(id){
+      if(!confirm('Sure to delete?')){
+        return false
+      }
+      axios.delete(`http://localhost:3000/users/${id}`).then(response=>{
+        if(response.status == 200){
+          this.getData();
+        }else{
+          alert('删除数据失败')
+        }
+      }).catch(err=>{
+        alert('服务器错误');
         console.log(err)
       })
     }
