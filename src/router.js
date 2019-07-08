@@ -30,7 +30,7 @@ const router = new VueRouter({
     path: '/',
     redirect: '/hero'
   }],
-  linkExactActiveClass: 'active'
+  linkActiveClass: 'active'
 })
 
 export default router
